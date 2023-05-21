@@ -9,7 +9,7 @@ public class TestGrid : MonoBehaviour
     private GridSystem gridSystem;
     void Start()
     {
-        gridSystem = new GridSystem(10, 10,2f);
+        gridSystem = new GridSystem(10, 10,1f);
         gridSystem.CreateGridObjects(gridPrefab);
         //Debug.Log(new GridPosition(2,5));
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,6 @@ public class GridSystem
         this.height = height;
         this.width = width;
         this.cellSize = cellSize;
-
         gridObjects = new GridObject[width, height];
         
         for (int x = 0; x < width; x++)
@@ -28,9 +28,9 @@ public class GridSystem
         
     }
 
-    public Vector3 GetWorldPosition(int x , int z)
+    public Vector3 GetWorldPosition(GridPosition gridPosition)
     {
-        return new Vector3(x, 0, z) * cellSize;
+        return new Vector3(gridPosition.x, 0, gridPosition.z) * cellSize;
     }
 
     public GridPosition GetGridPosition(Vector3 worldPosition)
@@ -45,10 +45,19 @@ public class GridSystem
         {
             for (int z = 0; z < height; z++)
             {
-                GameObject.Instantiate(testPrefab,GetWorldPosition(x,z),Quaternion.identity);        
+                GridPosition gridPosition = new GridPosition(x, z);
+                
+                Transform debugTransform = GameObject.Instantiate(testPrefab,GetWorldPosition(gridPosition),Quaternion.identity);
+                GridObjectDebug gridObjectDebug = debugTransform.GetComponent<GridObjectDebug>();
+                gridObjectDebug.SetGridObject(GetGridObject(gridPosition));
             }
         }
         
         
+    }
+
+    public GridObject GetGridObject(GridPosition gridPosition)
+    {
+        return gridObjects[gridPosition.x, gridPosition.z];
     }
 }
