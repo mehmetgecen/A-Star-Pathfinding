@@ -5,14 +5,7 @@ using UnityEngine;
 
 public class TestGrid : MonoBehaviour
 {
-    [SerializeField] private Transform gridPrefab;
-    private GridSystem gridSystem;
-    void Start()
-    {
-        gridSystem = new GridSystem(10, 10,1f);
-        gridSystem.CreateGridObjects(gridPrefab);
-        //Debug.Log(new GridPosition(2,5));
-    }
+    
 
     //TODO Update Method will be changed after MouseWorld Script is implemented.
     
