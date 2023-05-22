@@ -16,9 +16,7 @@ public class MouseWorld : MonoBehaviour
 
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.Log(GetPosition());
-        transform.position = GetPosition();
+        transform.position = MouseWorld.GetPosition();
     }
 
     public static Vector3 GetPosition()
