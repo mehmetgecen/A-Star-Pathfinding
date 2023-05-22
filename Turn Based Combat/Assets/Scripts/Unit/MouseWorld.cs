@@ -7,10 +7,8 @@ public class MouseWorld : MonoBehaviour
    
     void Update()
     {
-        Debug.Log(Input.mousePosition);
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        Debug.Log(Physics.Raycast(ray));
+        Debug.Log(Physics.Raycast(ray,out RaycastHit hit));
+        transform.position = hit.point;
     }
 }
