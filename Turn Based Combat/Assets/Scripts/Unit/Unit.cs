@@ -7,19 +7,24 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private Animator unitAnimator;
     
+    [SerializeField] private float rotateSpeed = 10f;
+    [SerializeField] private float movementSpeed = 2f;
+    [SerializeField] private float stopDistance = .1f;
+    
     private Vector3 targetPosition;
-    private float stopDistance = .1f;
-   
     
     void Update()
     {
-        transform.LookAt(MouseWorld.GetPosition());
+        //transform.LookAt(MouseWorld.GetPosition());
         
         if (Vector3.Distance(transform.position,targetPosition) > stopDistance)
         {
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
-            float movementSpeed = 2f;
+            
             transform.position += moveDirection * movementSpeed * Time.deltaTime;
+            unitAnimator.SetBool("startWalk",true);
+
+            transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
         }
         else
         {
@@ -29,7 +34,7 @@ public class Unit : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Move(MouseWorld.GetPosition());
-            unitAnimator.SetBool("startWalk",true);
+            
         }
         
         
