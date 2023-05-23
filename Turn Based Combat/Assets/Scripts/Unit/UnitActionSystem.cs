@@ -26,10 +26,9 @@ public class UnitActionSystem : MonoBehaviour
 
     private void Update()
     {
-        if(HandleUnitSelection()) return ;
-        
         if (Input.GetMouseButtonDown(0))
         {
+            if(HandleUnitSelection()) return ;
             selectedUnit.Move(MouseWorld.GetPosition());
         }
     }
@@ -58,5 +57,10 @@ public class UnitActionSystem : MonoBehaviour
     {
         selectedUnit = unit;
         OnSelectedUnitChanged?.Invoke(this,EventArgs.Empty);
+    }
+
+    public Unit GetSelectedUnit()
+    {
+        return selectedUnit;
     }
 }
