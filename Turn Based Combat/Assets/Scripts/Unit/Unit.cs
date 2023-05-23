@@ -57,4 +57,10 @@ public class Unit : MonoBehaviour
         this.targetPosition = targetPosition;
     }
     
+    public GridPosition GetGridPosition()
+    {
+        return gridPosition;
+    }
+
+    
 }
