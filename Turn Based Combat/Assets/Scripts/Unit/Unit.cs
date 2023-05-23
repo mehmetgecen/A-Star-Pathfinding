@@ -12,10 +12,17 @@ public class Unit : MonoBehaviour
     [SerializeField] private float stopDistance = .1f;
     
     private Vector3 targetPosition;
+    private GridPosition gridPosition;
 
     private void Awake()
     {
         targetPosition = transform.position;
+    }
+
+    private void Start()
+    {
+        gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        LevelGrid.Instance.SetUnitAtGridPosition(gridPosition,this);
     }
 
     void Update()
@@ -35,7 +42,14 @@ public class Unit : MonoBehaviour
         {
             unitAnimator.SetBool("startWalk",false);
         }
+
+        GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         
+        if (!Equals(newGridPosition,gridPosition))
+        {
+            LevelGrid.Instance.UnitMovedGridPosition(this,gridPosition,newGridPosition);
+            gridPosition = newGridPosition;
+        }
     }
 
     public void Move(Vector3 targetPosition)
