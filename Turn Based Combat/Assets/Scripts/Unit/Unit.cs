@@ -12,7 +12,12 @@ public class Unit : MonoBehaviour
     [SerializeField] private float stopDistance = .1f;
     
     private Vector3 targetPosition;
-    
+
+    private void Awake()
+    {
+        targetPosition = transform.position;
+    }
+
     void Update()
     {
         //transform.LookAt(MouseWorld.GetPosition());
@@ -30,17 +35,10 @@ public class Unit : MonoBehaviour
         {
             unitAnimator.SetBool("startWalk",false);
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Move(MouseWorld.GetPosition());
-            
-        }
-        
         
     }
 
-    void Move(Vector3 targetPosition)
+    public void Move(Vector3 targetPosition)
     {
         this.targetPosition = targetPosition;
     }

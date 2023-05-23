@@ -9,23 +9,26 @@ public class LevelGrid : MonoBehaviour
     private GridSystem gridSystem;
     void Awake()
     {
-        gridSystem = new GridSystem(10, 10,1f);
+        gridSystem = new GridSystem(10, 10,2f);
         gridSystem.CreateGridObjects(gridPrefab);
         
     }
 
-    /*public void SetUnitAtGridPosition(GridPosition gridPosition, Unit unit)
+    public void SetUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
-        
+        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+        gridObject.SetUnit(unit);
     }
 
-    public Unit GetUnitAtGridPositiıon(GridPosition gridPosition)
+    public Unit GetUnitAtGridPosition(GridPosition gridPosition)
     {
-        
+        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+        return gridObject.GetUnit();
     }
 
     public void ClearUnitAtGridPosition(GridPosition gridPosition)
     {
-        
-    }*/
+        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+        gridObject.SetUnit(null);
+    }
 }
