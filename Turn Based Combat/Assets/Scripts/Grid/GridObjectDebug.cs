@@ -8,7 +8,7 @@ public class GridObjectDebug : MonoBehaviour
 {
     [SerializeField] private TextMeshPro _textMeshPro;
     private GridObject gridObject;
-    private GridSystem gridSystem;
+    private GridSystem<GridObject> gridSystem;
     
     public void SetGridObject(GridObject gridObject)
     {
