@@ -6,10 +6,23 @@ using UnityEngine.Events;
 
 public class UnitActionSystem : MonoBehaviour
 {
+    public static UnitActionSystem Instance { get; private set; } // Property can be read from other classes, but only set this class.
+    
     [SerializeField] private Unit selectedUnit;
     [SerializeField] private LayerMask unitLayerMask;
 
     public event EventHandler OnSelectedUnitChanged;
+
+    private void Awake()
+    {
+        if (Instance!= null)
+        {
+            Debug.LogError("There`s more than one UnitActionSystem " + transform + " - " + Instance);
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void Update()
     {
