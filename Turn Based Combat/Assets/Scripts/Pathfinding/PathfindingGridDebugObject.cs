@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,8 +22,8 @@ public class PathfindingGridDebugObject : GridObjectDebug
     protected override void Update()
     {
         base.Update();
-        gCostText.text = pathNode.GetGCost().ToString();
-        hCostText.text = pathNode.GetHCost().ToString();
-        fCostText.text = pathNode.GetFCost().ToString();
+        gCostText.text = String.Format("{0:00}",pathNode.GetGCost().ToString());
+        hCostText.text = String.Format("{0:00}",pathNode.GetHCost().ToString());
+        fCostText.text = String.Format("{0:00}",pathNode.GetFCost().ToString());
     }
 }

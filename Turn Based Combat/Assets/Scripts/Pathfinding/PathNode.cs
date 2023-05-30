@@ -69,7 +69,7 @@ public class PathNode
     
     public PathNode GetCameFromPathNode()
     {
-        return GetCameFromPathNode();
+        return cameFromPathNode;
     }
 
     public bool IsWalkable()
