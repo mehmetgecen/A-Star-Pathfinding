@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    void Update()
+    void LateUpdate()
     {
         // Position Input
         
