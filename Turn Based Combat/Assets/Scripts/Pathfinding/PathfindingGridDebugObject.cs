@@ -22,8 +22,8 @@ public class PathfindingGridDebugObject : GridObjectDebug
     protected override void Update()
     {
         base.Update();
-        gCostText.text = String.Format("{0:00}",pathNode.GetGCost().ToString());
-        hCostText.text = String.Format("{0:00}",pathNode.GetHCost().ToString());
-        fCostText.text = String.Format("{0:00}",pathNode.GetFCost().ToString());
+        gCostText.text = Mathf.RoundToInt(pathNode.GetGCost()).ToString();
+        hCostText.text = Mathf.RoundToInt(pathNode.GetHCost()).ToString();
+        fCostText.text = Mathf.RoundToInt(pathNode.GetFCost()).ToString();
     }
 }
